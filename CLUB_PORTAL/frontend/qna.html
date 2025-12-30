@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Q&A | Club Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            display: block !important;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #020617, #0f172a);
+            color: #e5e7eb;
+            padding-top: 64px;
+            margin: 0;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 1.9rem;
+            margin: 2.5rem 0 3rem;
+            color: #e0f2fe;
+        }
+
+        .faq-container {
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto 5rem;
+        }
+
+        .faq-card {
+            background: radial-gradient(circle at top left, #020617, #0f172a);
+            border-radius: 18px;
+            padding: 1.6rem 1.8rem;
+            margin-bottom: 1.4rem;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .faq-card:hover {
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.35);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.05rem;
+            color: #60a5fa;
+            font-weight: 500;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            margin-top: 0;
+            color: #c7d2fe;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            transition: max-height 0.35s ease, margin-top 0.35s ease;
+        }
+
+        .faq-card.active .faq-answer {
+            max-height: 300px;
+            margin-top: 0.8rem;
+        }
+
+        .icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-card.active .icon {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="home.html" class="logo">Club Portal</a>
+
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="clubs.html">Clubs</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="events.html">Events</a>
+            <a href="qna.html">Help</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </div>
+
+
+    <h2 class="page-title">Questions & Answers</h2>
+
+    <div class="faq-container">
+
+        <div class="faq-card">
+            <div class="faq-question">
+                How do I join a club?
+                <span class="icon">+</span>
+            </div>
+            <div class="faq-answer">
+                Visit the Clubs section, explore available clubs, and contact the respective club committee for
+                membership details.
+            </div>
+        </div>
+
+        <div class="faq-card">
+            <div class="faq-question">
+                Who can participate in events?
+                <span class="icon">+</span>
+            </div>
+            <div class="faq-answer">
+                All registered students of the college can participate unless specified otherwise in the event details.
+            </div>
+        </div>
+
+        <div class="faq-card">
+            <div class="faq-question">
+                Where will event updates be posted?
+                <span class="icon">+</span>
+            </div>
+            <div class="faq-answer">
+                Event updates will be available in the Events section and through official club communication channels.
+            </div>
+        </div>
+
+        <div class="faq-card">
+            <div class="faq-question">
+                Can I attend multiple club events?
+                <span class="icon">+</span>
+            </div>
+            <div class="faq-answer">
+                Yes, students are encouraged to participate in multiple clubs and events based on their interests.
+            </div>
+        </div>
+
+        <div class="faq-card">
+            <div class="faq-question">
+                Who do I contact for technical issues?
+                <span class="icon">+</span>
+            </div>
+            <div class="faq-answer">
+                For any technical issues, please contact the Club Portal development team or report the issue via the
+                Help section.
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const faqCards = document.querySelectorAll('.faq-card');
+
+        faqCards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('active');
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

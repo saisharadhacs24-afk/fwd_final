@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>About | Club Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            display: block !important;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #020617, #0f172a);
+            color: #e5e7eb;
+            padding-top: 64px;
+            margin: 0;
+        }
+
+        .about-wrapper {
+            min-height: calc(100vh - 64px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-container {
+            max-width: 900px;
+            padding: 3rem 2.5rem;
+            background: radial-gradient(circle at top left, #020617, #0f172a);
+            border-radius: 22px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+
+        .about-container h2 {
+            font-size: 2rem;
+            margin-bottom: 1.4rem;
+            color: #e0f2fe;
+        }
+
+        .about-container p {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: #c7d2fe;
+            margin-bottom: 1.2rem;
+        }
+
+        .highlight {
+            color: #60a5fa;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="home.html" class="logo">Club Portal</a>
+
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="clubs.html">Clubs</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="events.html">Events</a>
+            <a href="qna.html">Help</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </div>
+
+
+    <!-- About Content -->
+    <div class="about-wrapper">
+        <div class="about-container">
+            <h2>About Club Portal</h2>
+
+            <p>
+                <span class="highlight">Club Portal</span> is a centralized digital platform designed to
+                bring all student clubs, events, and activities under one unified interface.
+            </p>
+
+            <p>
+                The portal allows students to explore various clubs, view event galleries,
+                stay informed about upcoming events, and access helpful information through
+                the Q&amp;A section.
+            </p>
+
+            <p>
+                This project focuses on clean design, easy navigation, and scalability,
+                ensuring that new features such as event registrations, gallery uploads,
+                and discussion forums can be added in the future.
+            </p>
+
+            <p>
+                Built using modern web technologies and the MERN architecture,
+                Club Portal aims to improve student engagement and streamline
+                campus activities through a single, reliable platform.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('username');
+            window.location.href = 'login.html';
+        }
+    </script>
+    <script src="js/common.js"></script>
+
+</body>
+
+</html>

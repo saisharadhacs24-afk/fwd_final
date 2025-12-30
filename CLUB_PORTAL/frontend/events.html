@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Events | Club Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            display: block !important;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #020617, #0f172a);
+            color: #e5e7eb;
+            padding-top: 64px;
+            margin: 0;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 1.9rem;
+            margin: 2.5rem 0 3rem;
+            color: #e0f2fe;
+        }
+
+        .events-grid {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto 5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.2rem;
+        }
+
+        .event-card {
+            background: radial-gradient(circle at top left, #020617, #0f172a);
+            border-radius: 18px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 45px rgba(59, 130, 246, 0.45);
+        }
+
+        .event-card h3 {
+            color: #60a5fa;
+            margin-bottom: 0.6rem;
+            font-size: 1.25rem;
+        }
+
+        .event-card p {
+            font-size: 0.95rem;
+            color: #c7d2fe;
+            line-height: 1.6;
+        }
+
+        .event-meta {
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="home.html" class="logo">Club Portal</a>
+
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="clubs.html">Clubs</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="events.html">Events</a>
+            <a href="qna.html">Help</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </div>
+
+    <h2 class="page-title">Upcoming Events</h2>
+
+    <div class="events-grid">
+
+        <div class="event-card" onclick="openEvent('tech-talk')">
+            <h3>Tech Talk: AI & Future</h3>
+            <p>Expert insights on artificial intelligence trends and applications.</p>
+            <div class="event-meta">📅 18 Oct 2025 · 📍 Seminar Hall</div>
+        </div>
+
+        <div class="event-card" onclick="openEvent('cultural-night')">
+            <h3>Cultural Night</h3>
+            <p>A celebration of music, dance, and cultural diversity.</p>
+            <div class="event-meta">📅 22 Oct 2025 · 📍 Open Auditorium</div>
+        </div>
+
+        <div class="event-card" onclick="openEvent('hackathon')">
+            <h3>24-Hr Hackathon</h3>
+            <p>Build innovative solutions in a high-energy coding marathon.</p>
+            <div class="event-meta">📅 2 Nov 2025 · 📍 Innovation Lab</div>
+        </div>
+
+        <div class="event-card" onclick="openEvent('sports-meet')">
+            <h3>Annual Sports Meet</h3>
+            <p>Competitive sports events promoting teamwork and fitness.</p>
+            <div class="event-meta">📅 10 Nov 2025 · 📍 Sports Ground</div>
+        </div>
+
+        <div class="event-card" onclick="openEvent('photography-workshop')">
+            <h3>Photography Workshop</h3>
+            <p>Hands-on session on camera basics, framing, and editing.</p>
+            <div class="event-meta">📅 15 Nov 2025 · 📍 Media Lab</div>
+        </div>
+
+        <div class="event-card" onclick="openEvent('startup-talk')">
+            <h3>Startup & Entrepreneurship Talk</h3>
+            <p>Learn how to turn ideas into startups from industry founders.</p>
+            <div class="event-meta">📅 20 Nov 2025 · 📍 Conference Hall</div>
+        </div>
+
+    </div>
+
+    <script>
+        function openEvent(eventId) {
+            window.location.href = `event-details.html?event=${eventId}`;
+        }
+    </script>
+
+    <script src="js/common.js"></script>
+
+</body>
+
+</html>

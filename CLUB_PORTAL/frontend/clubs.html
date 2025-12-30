@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Discover Clubs | Club Portal</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        body {
+            display: block !important;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #020617, #0f172a);
+            color: #e5e7eb;
+            padding-top: 64px;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin: 2.5rem 0;
+            color: #e0f2fe;
+        }
+
+        .clubs-grid {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto 4rem auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+        }
+
+        .club-card {
+            background: radial-gradient(circle at top left, #020617, #0f172a);
+            padding: 2.2rem;
+            border-radius: 18px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 200px;
+        }
+
+        .club-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.45);
+        }
+
+        .club-card h3 {
+            color: #60a5fa;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .club-card p {
+            font-size: 0.95rem;
+            color: #c7d2fe;
+            line-height: 1.5;
+        }
+
+        /* Responsive fallback */
+        @media (max-width: 1024px) {
+            .clubs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .clubs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="home.html" class="logo">Club Portal</a>
+
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="clubs.html">Clubs</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="events.html">Events</a>
+            <a href="qna.html">Help</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </div>
+
+    <h2 class="page-title">Discover Student Clubs</h2>
+
+    <div class="clubs-grid">
+
+        <div class="club-card" onclick="openClub('tech')">
+            <h3>Tech Club</h3>
+            <p>
+                A community for technology enthusiasts focusing on coding,
+                development, and innovation.
+            </p>
+        </div>
+
+        <div class="club-card" onclick="openClub('cultural')">
+            <h3>Cultural Club</h3>
+            <p>
+                Celebrating art, dance, music, and cultural diversity
+                across the campus.
+            </p>
+        </div>
+
+        <div class="club-card" onclick="openClub('sports')">
+            <h3>Sports Club</h3>
+            <p>
+                Promoting physical fitness, teamwork, and competitive sports
+                activities.
+            </p>
+        </div>
+
+        <div class="club-card" onclick="openClub('literary')">
+            <h3>Literary Club</h3>
+            <p>
+                A space for writers, readers, poets, and literature lovers
+                to collaborate.
+            </p>
+        </div>
+
+        <div class="club-card" onclick="openClub('social')">
+            <h3>Social Service Club</h3>
+            <p>
+                Working towards social awareness, community service,
+                and volunteer activities.
+            </p>
+        </div>
+
+        <div class="club-card" onclick="openClub('photography')">
+            <h3>Photography Club</h3>
+            <p>
+                Capturing moments through lenses, learning photography
+                techniques, editing, and visual storytelling.
+            </p>
+        </div>
+
+        <div class="club-card" onclick="openClub('entrepreneurship')">
+            <h3>Entrepreneurship Club</h3>
+            <p>
+                Encouraging startup culture, business ideas, leadership,
+                and innovation among students.
+            </p>
+        </div>
+
+        <div class="club-card" onclick="openClub('music')">
+            <h3>Music Club</h3>
+            <p>
+                A platform for singers, instrumentalists, and music lovers
+                to collaborate and perform.
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        function openClub(clubId) {
+            window.location.href = `club-details.html#${clubId}`;
+        }
+    </script>
+    <script src="js/common.js"></script>
+
+</body>
+
+</html>

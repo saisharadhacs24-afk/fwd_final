@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Event Details | Club Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            display: block !important;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #020617, #0f172a);
+            color: #e5e7eb;
+            padding-top: 64px;
+            margin: 0;
+        }
+
+        .details-container {
+            width: 90%;
+            max-width: 900px;
+            margin: 3rem auto;
+            background: radial-gradient(circle at top left, #020617, #0f172a);
+            padding: 2.8rem;
+            border-radius: 22px;
+        }
+
+        .details-container h2 {
+            color: #60a5fa;
+            margin-bottom: 1rem;
+        }
+
+        .details-container p {
+            line-height: 1.7;
+            color: #c7d2fe;
+        }
+
+        .details-section {
+            margin-top: 2rem;
+        }
+
+        .label {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .value {
+            font-size: 1rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            color: #60a5fa;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* Coming soon link */
+        .coming-soon {
+            font-size: 0.9rem;
+            color: #60a5fa;
+            text-decoration: none;
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .coming-soon:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="home.html" class="logo">Club Portal</a>
+
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="clubs.html">Clubs</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="events.html">Events</a>
+            <a href="qna.html">Help</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </div>
+
+    <div class="details-container">
+        <a href="events.html" class="back-link">← Back to Events</a>
+
+        <h2 id="eventTitle">Event</h2>
+        <p id="eventDescription"></p>
+
+        <div class="details-section">
+            <div class="label">Date & Time</div>
+            <div class="value" id="eventDate"></div>
+        </div>
+
+        <div class="details-section">
+            <div class="label">Venue</div>
+            <div class="value" id="eventVenue"></div>
+        </div>
+
+        <div class="details-section">
+            <div class="label">Point of Contact</div>
+            <div class="value" id="eventContact"></div>
+        </div>
+
+        <!-- FUTURE FEATURE -->
+        <div class="details-section">
+            <div class="label">Registration</div>
+            <div class="value">
+                <a href="#" class="coming-soon" onclick="return false;">
+                    More details & registration (coming soon)
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const eventId = params.get('event');
+
+        const eventsData = {
+            "tech-talk": {
+                title: "Tech Talk: AI & Future",
+                description: "An expert-led session exploring artificial intelligence trends, career paths, and real-world applications.",
+                date: "18 Oct 2025 · 10:00 AM",
+                venue: "Seminar Hall",
+                contact: "Rahul Sharma · techclub@college.edu"
+            },
+            "cultural-night": {
+                title: "Cultural Night",
+                description: "A vibrant cultural showcase featuring music, dance, and artistic performances by students.",
+                date: "22 Oct 2025 · 6:00 PM",
+                venue: "Open Auditorium",
+                contact: "Ananya Rao · culturalclub@college.edu"
+            },
+            "hackathon": {
+                title: "24-Hr Hackathon",
+                description: "Collaborate in teams to build innovative solutions within a 24-hour coding marathon.",
+                date: "2 Nov 2025 · 9:00 AM",
+                venue: "Innovation Lab",
+                contact: "Aditya Verma · hackathon@college.edu"
+            },
+            "sports-meet": {
+                title: "Annual Sports Meet",
+                description: "A series of competitive sports events promoting fitness, teamwork, and sportsmanship.",
+                date: "10 Nov 2025 · 8:00 AM",
+                venue: "Sports Ground",
+                contact: "Suresh Kumar · sports@college.edu"
+            },
+            "photography-workshop": {
+                title: "Photography Workshop",
+                description: "Hands-on workshop covering camera basics, composition techniques, and photo editing.",
+                date: "15 Nov 2025 · 11:00 AM",
+                venue: "Media Lab",
+                contact: "Sneha Patel · photography@college.edu"
+            },
+            "startup-talk": {
+                title: "Startup & Entrepreneurship Talk",
+                description: "Industry founders share insights on startups, innovation, and entrepreneurial journeys.",
+                date: "20 Nov 2025 · 4:00 PM",
+                venue: "Conference Hall",
+                contact: "Rhea Malhotra · ecell@college.edu"
+            }
+        };
+
+        const event = eventsData[eventId];
+
+        if (event) {
+            document.getElementById('eventTitle').innerText = event.title;
+            document.getElementById('eventDescription').innerText = event.description;
+            document.getElementById('eventDate').innerText = event.date;
+            document.getElementById('eventVenue').innerText = event.venue;
+            document.getElementById('eventContact').innerText = event.contact;
+        }
+    </script>
+
+    <script src="js/common.js"></script>
+
+</body>
+
+</html>

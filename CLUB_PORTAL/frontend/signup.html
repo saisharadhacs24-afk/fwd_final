@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Signup | Club Portal</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="auth-page">
+
+    <div class="container">
+        <h2>Create Account</h2>
+
+        <input type="text" id="username" placeholder="Username" />
+        <input type="email" id="email" placeholder="Email" />
+        <input type="password" id="password" placeholder="Password" />
+
+        <button onclick="signup()">Sign Up</button>
+
+        <div id="message" class="message"></div>
+
+        <div class="link">
+            Already have an account?
+            <a href="login.html">Login</a>
+        </div>
+    </div>
+
+    <!-- Auth logic -->
+    <script src="js/auth.js"></script>
+    <!-- Shared logic -->
+    <script src="js/common.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Home | Club Portal</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            font-size: 18px;
+        }
+
+        body {
+            padding-top: 64px;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 600;
+            letter-spacing: -0.4px;
+            color: #e0f2fe;
+        }
+
+        p {
+            font-weight: 400;
+            line-height: 1.65;
+            letter-spacing: 0.15px;
+            color: #c7d2fe;
+        }
+
+        .dashboard {
+            max-width: 900px;
+            margin: 4rem auto 6rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.6rem;
+        }
+
+        .card {
+            position: relative;
+            background: radial-gradient(circle at top left, #020617, #0f172a);
+            padding: 2.6rem 2.4rem;
+            border-radius: 20px;
+            min-height: 240px;
+            cursor: pointer;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(59, 130, 246, 0.5);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .card-header i {
+            font-size: 2.1rem;
+        }
+
+        .card h4 {
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+            padding: 1px;
+            background: linear-gradient(135deg, #2563eb, transparent);
+            -webkit-mask: linear-gradient(#000 0 0) content-box,
+                linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .clubs i {
+            color: #38bdf8;
+        }
+
+        .gallery i {
+            color: #a78bfa;
+        }
+
+        .events i {
+            color: #34d399;
+        }
+
+        .qna i {
+            color: #fbbf24;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="nav-left">
+            <a href="home.html" class="logo">Club Portal</a>
+            <span class="welcome-text" id="welcomeUser"></span>
+        </div>
+
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="clubs.html">Clubs</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="events.html">Events</a>
+            <a href="qna.html">Help</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </div>
+
+
+    <!-- DASHBOARD -->
+    <div class="dashboard">
+        <div class="card clubs" onclick="location.href='clubs.html'">
+            <div class="card-header">
+                <i class="fa-solid fa-users"></i>
+                <h4>Discover Clubs</h4>
+            </div>
+            <p>Explore student clubs, missions, activities, and memberships.</p>
+        </div>
+
+        <div class="card gallery" onclick="location.href='gallery.html'">
+            <div class="card-header">
+                <i class="fa-solid fa-image"></i>
+                <h4>Gallery</h4>
+            </div>
+            <p>Relive moments from events, fests, and workshops.</p>
+        </div>
+
+        <div class="card events" onclick="location.href='events.html'">
+            <div class="card-header">
+                <i class="fa-solid fa-calendar-days"></i>
+                <h4>Events</h4>
+            </div>
+            <p>Stay updated with upcoming events and schedules.</p>
+        </div>
+
+        <div class="card qna" onclick="location.href='qna.html'">
+            <div class="card-header">
+                <i class="fa-solid fa-circle-question"></i>
+                <h4>Q&A</h4>
+            </div>
+            <p>Find answers or reach out for support.</p>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'login.html';
+        }
+
+        if (!localStorage.getItem('token')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+    <script src="js/common.js"></script>
+
+    <script>
+        const username = localStorage.getItem('username');
+        const welcomeEl = document.getElementById('welcomeUser');
+
+        if (username && welcomeEl) {
+            welcomeEl.textContent = `Welcome, ${username}`;
+        }
+    </script>
+
+
+
+</body>
+
+</html>

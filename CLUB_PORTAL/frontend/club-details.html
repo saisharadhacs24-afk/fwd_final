@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Club Details | Club Portal</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+        body {
+            display: block !important;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #020617, #0f172a);
+            color: #e5e7eb;
+            padding-top: 64px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 2.5rem;
+            background: radial-gradient(circle at top left, #020617, #0f172a);
+            border-radius: 20px;
+        }
+
+        .club-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .club-logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #2563eb, #38bdf8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #020617;
+        }
+
+        .club-header h2 {
+            font-size: 1.8rem;
+            color: #e0f2fe;
+        }
+
+        .section {
+            margin-top: 2rem;
+        }
+
+        .section h3 {
+            color: #60a5fa;
+            margin-bottom: 0.6rem;
+        }
+
+        .section p {
+            line-height: 1.6;
+            color: #c7d2fe;
+        }
+
+        .committee-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 0.5rem;
+        }
+
+        .committee-list li {
+            padding: 0.3rem 0;
+            color: #e5e7eb;
+        }
+
+        .back-btn {
+            margin-top: 2.5rem;
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #2563eb, #38bdf8);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="home.html" class="logo">Club Portal</a>
+
+        <div class="nav-links">
+            <a href="about.html">About</a>
+            <a href="clubs.html">Clubs</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="events.html">Events</a>
+            <a href="qna.html">Help</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="club-header">
+            <div class="club-logo" id="clubLogo">C</div>
+            <h2 id="clubName">Club Name</h2>
+        </div>
+
+        <div class="section">
+            <h3>About the Club</h3>
+            <p id="clubDescription"></p>
+        </div>
+
+        <div class="section">
+            <h3>Committee Members</h3>
+            <ul class="committee-list" id="committeeList"></ul>
+        </div>
+
+        <div class="section">
+            <h3>Contact Information</h3>
+            <p id="clubContact"></p>
+        </div>
+
+        <a href="clubs.html" class="back-btn">← Back to Clubs</a>
+    </div>
+
+    <script>
+        const clubsData = {
+            tech: {
+                name: 'Tech Club',
+                logo: '💻',
+                description:
+                    'The Tech Club focuses on coding, development, hackathons, and emerging technologies.',
+                committee: ['President: Arjun', 'Vice President: Meera', 'Secretary: Rahul'],
+                contact: 'techclub@college.edu'
+            },
+            cultural: {
+                name: 'Cultural Club',
+                logo: '🎭',
+                description:
+                    'The Cultural Club promotes art, dance, music, and cultural events across campus.',
+                committee: ['President: Ananya', 'Coordinator: Kiran'],
+                contact: 'culturalclub@college.edu'
+            },
+            sports: {
+                name: 'Sports Club',
+                logo: '🏆',
+                description:
+                    'The Sports Club encourages fitness, teamwork, and participation in sports events.',
+                committee: ['Captain: Rohit', 'Manager: Suresh'],
+                contact: 'sportsclub@college.edu'
+            },
+            literary: {
+                name: 'Literary Club',
+                logo: '📚',
+                description:
+                    'A hub for readers, writers, poets, and debaters to express creativity.',
+                committee: ['Editor: Nisha', 'Coordinator: Aman'],
+                contact: 'literaryclub@college.edu'
+            },
+            social: {
+                name: 'Social Service Club',
+                logo: '🤝',
+                description:
+                    'Focused on community service, volunteering, and social awareness initiatives.',
+                committee: ['Lead: Priya', 'Volunteer Head: Mohan'],
+                contact: 'socialclub@college.edu'
+            },
+            photography: {
+                name: 'Photography Club',
+                logo: '📷',
+                description:
+                    'Dedicated to photography, editing, visual storytelling, and exhibitions.',
+                committee: ['Lead Photographer: Varun', 'Editor: Sneha'],
+                contact: 'photoclub@college.edu'
+            },
+            entrepreneurship: {
+                name: 'Entrepreneurship Club',
+                logo: '🚀',
+                description:
+                    'Encouraging startups, innovation, leadership, and business ideas.',
+                committee: ['Founder: Aditya', 'Operations: Rhea'],
+                contact: 'ecell@college.edu'
+            },
+            music: {
+                name: 'Music Club',
+                logo: '🎵',
+                description:
+                    'A platform for singers, instrumentalists, and music enthusiasts.',
+                committee: ['Lead Vocalist: Neel', 'Instrument Head: Kavya'],
+                contact: 'musicclub@college.edu'
+            }
+        };
+
+        // Get club ID from URL hash (e.g. #tech)
+        const clubId = window.location.hash.replace('#', '');
+
+
+        // Fallback for clean URLs like /club-details/tech
+        if (!clubId) {
+            const pathParts = window.location.pathname.split('/');
+            clubId = pathParts[pathParts.length - 1];
+        }
+
+
+        const club = clubsData[clubId];
+
+        if (club) {
+            document.getElementById('clubName').innerText = club.name;
+            document.getElementById('clubLogo').innerText = club.logo;
+            document.getElementById('clubDescription').innerText = club.description;
+            document.getElementById('clubContact').innerText = club.contact;
+
+            const committeeList = document.getElementById('committeeList');
+            club.committee.forEach(member => {
+                const li = document.createElement('li');
+                li.innerText = member;
+                committeeList.appendChild(li);
+            });
+        } else {
+            document.querySelector('.container').innerHTML =
+                '<h2>Club not found</h2><a href="clubs.html">Back to Clubs</a>';
+        }
+    </script>
+    <script src="js/common.js"></script>
+
+</body>
+
+</html>
